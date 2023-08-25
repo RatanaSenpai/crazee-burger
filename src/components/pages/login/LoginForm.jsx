@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import { BsPersonCircle } from "react-icons/bs"
 
 import { IoChevronForwardOutline } from "react-icons/io5"
-import Input from './Input';
+import TextInput from './TextInput';
 
 
 export default function LoginForm() {
@@ -29,7 +29,7 @@ export default function LoginForm() {
                 <h2>Connectez-vous</h2>
             </div>
             <div>
-                <Input 
+                <TextInput 
                 value={inputValue} 
                 onChange={handleChange} 
                 placeholder={"Entrez votre prénom"}
