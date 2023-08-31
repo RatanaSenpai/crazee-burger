@@ -2,6 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { fakeMenu2 } from "../../../../fakeData/fakeMenu"
 import { theme } from "../../../../theme";
+import Product from "./Product";
 
 export default function Menu() {
     const [menu, setmenu] = useState(fakeMenu2)
@@ -9,7 +10,9 @@ export default function Menu() {
     return (
         <MenuStyled className="menu">
             {menu.map((produit) => {
-                return <div className="produit">{produit.title}</div>
+                return (
+                    <Product imageSource={produit.imageSource} title={produit.title} price={produit.price}/>
+                )
             })}
         </MenuStyled>
     )
@@ -21,14 +24,10 @@ const MenuStyled = styled.div`
     grid-template-columns: repeat(4, 1fr);
     grid-row-gap: 60px;
     justify-items: center;
-    padding: 50px 50px 150px;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+    padding: 50px 50px 150px;
     
 
-    .produit {
-        background: red;
-        width: 240px;
-        height: 330px;
-    }
+    
 `;
 
