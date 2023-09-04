@@ -7,7 +7,6 @@ export default function NavbarRightSide({username}) {
         <NavbarRightSideStyle className="right-side">
             {/* <div className="admin-button">Admin Button</div> */}
             <Profile username={username}/>
-            <div className="picture"></div>
         </NavbarRightSideStyle>
     )
 }
@@ -15,6 +14,7 @@ export default function NavbarRightSide({username}) {
 const NavbarRightSideStyle = styled.div`
     display: flex;
     align-items: center;
+    padding-right: 50px;
 
     /* .admin-button {
         background: lightgray;

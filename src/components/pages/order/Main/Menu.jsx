@@ -22,9 +22,9 @@ export default function Menu() {
         })}
         </MenuStyled>
     )
-    }
+}
 
-const MenuStyled = styled.div`
+    const MenuStyled = styled.div`
     background: ${theme.colors.background_white};
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -33,4 +33,3 @@ const MenuStyled = styled.div`
     justify-items: center;
     box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 `
-
