@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import { theme } from "../../../../theme";
 
 
 export default function Product({ imageSource, title, price }) {
@@ -42,6 +43,36 @@ const ProductStyled = styled.div`
 
     .info-text {
         border: 2px solid blue;
+
+        .description {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .left-description {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            font-weight: ${theme.fonts.weights.medium};
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: ${theme.fonts.weights.medium};
+            color: ${theme.colors.primary};
+        }
+
+        .right-description {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: ${theme.fonts.size.P1};
+
+            .primary-button {
+            font-size: ${theme.fonts.size.XS};
+            cursor: pointer;
+            padding: 12px;
+            }
+        }
+    }
     }
     
 `;
