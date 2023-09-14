@@ -11,10 +11,10 @@ export default function Card({ title, imageSource, leftDescription }) {
         <div className="text-info">
             <div className="title">{title}</div>
             <div className="description">
-            <div className="left-description">{leftDescription}</div>
-            <div className="right-description">
-                <PrimaryButton className="primary-button" label={"Ajouter"} />
-            </div>
+                <div className="left-description">{leftDescription}</div>
+                <div className="right-description">
+                    <PrimaryButton className="primary-button" label={"Ajouter"} />
+                </div>
             </div>
         </div>
         </CardStyled>
