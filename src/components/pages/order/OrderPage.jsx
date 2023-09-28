@@ -14,6 +14,7 @@ export default function OrderPage() {
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [isAddSelected, setIsAddSelected] = useState(true)
     const [isEditSelected, setIsEditSelected] = useState(false)
+    const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
     const orderContextValue = {
         isModeAdmin, 
@@ -24,6 +25,8 @@ export default function OrderPage() {
         setIsAddSelected,
         isEditSelected,
         setIsEditSelected,
+        currentTabSelected, 
+        setCurrentTabSelected
     }
     return (
         <OrderContext.Provider value={orderContextValue}>
