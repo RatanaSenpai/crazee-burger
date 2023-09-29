@@ -12,8 +12,6 @@ export default function OrderPage() {
     const { username } = useParams()
     const [isModeAdmin, setisModeAdmin] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(false)
-    const [isAddSelected, setIsAddSelected] = useState(true)
-    const [isEditSelected, setIsEditSelected] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
     const orderContextValue = {
@@ -21,10 +19,6 @@ export default function OrderPage() {
         setisModeAdmin,
         isCollapsed,
         setIsCollapsed,
-        isAddSelected,
-        setIsAddSelected,
-        isEditSelected,
-        setIsEditSelected,
         currentTabSelected, 
         setCurrentTabSelected
     }
