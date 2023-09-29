@@ -4,7 +4,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { theme } from "../../../../../theme"
 import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
-import { getTabsConfig } from "./getTabsConfig"
+import { tabsConfig } from "./tabsConfig"
 
 export default function AdminTabs() {
 
@@ -22,7 +22,7 @@ export default function AdminTabs() {
         setCurrentTabSelected(tabSelected)
     }
 
-    const tabs = getTabsConfig(currentTabSelected)
+    const tabs = tabsConfig
 
     return (
         <AdminTabsStyled>
