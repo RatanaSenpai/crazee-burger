@@ -2,13 +2,6 @@ import { AiOutlinePlus } from "react-icons/ai"
 import { MdModeEditOutline } from "react-icons/md"
 
 export const getTabsConfig = () => [
-    // { 
-    //     index:"chevronUpDown",
-    //     label:"",
-    //     Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-    //     onClick: () => setIsCollapsed(!isCollapsed),
-    //     className: isCollapsed ? "is-active" : "",
-    // },
     { 
         index:"add",
         label:"Ajouter un produit",

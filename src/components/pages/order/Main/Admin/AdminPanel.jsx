@@ -14,7 +14,6 @@ export default function AdminPanel() {
     return (
         <AdminPanelStyled className="panel-admin">
             {currentTabSelected === tabSelected.index && tabSelected.label}
-            {/* {currentTabSelected === "edit" && "Modifier un produit"} */}
         </AdminPanelStyled>
     )
 }
