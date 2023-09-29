@@ -10,7 +10,7 @@ import OrderContext from "../../../context/OrderContext.jsx"
 export default function OrderPage() {
 
     const { username } = useParams()
-    const [isModeAdmin, setisModeAdmin] = useState(true)
+    const [isModeAdmin, setisModeAdmin] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [isAddSelected, setIsAddSelected] = useState(true)
     const [isEditSelected, setIsEditSelected] = useState(false)
