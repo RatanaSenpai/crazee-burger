@@ -10,7 +10,7 @@ import { theme } from '../../../theme';
 
 
 export default function LoginForm() {
-    const [inputValue, setInputValue] = useState("")
+    const [inputValue, setInputValue] = useState("Senpai")
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
