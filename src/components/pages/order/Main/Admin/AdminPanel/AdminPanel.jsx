@@ -1,8 +1,8 @@
 import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../../theme"
 import { useContext } from "react"
-import OrderContext from "../../../../../context/OrderContext"
-import { getTabSelected, tabsConfig } from "./tabsConfig"
+import OrderContext from "../../../../../../context/OrderContext"
+import { getTabSelected, tabsConfig } from "../tabsConfig"
 
 export default function AdminPanel() {
 
@@ -13,7 +13,7 @@ export default function AdminPanel() {
 
     return (
         <AdminPanelStyled className="panel-admin">
-            {tabSelected.label}
+            {tabSelected.Content}
         </AdminPanelStyled>
     )
 }
