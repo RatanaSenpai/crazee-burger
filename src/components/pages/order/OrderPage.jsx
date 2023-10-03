@@ -1,18 +1,28 @@
-import { useParams } from "react-router-dom";
 import { styled } from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../../theme";
 import Navbar from "./Navbar/Navbar";
 import { useState } from "react";
-import OrderContext from "../../../context/OrderContext.jsx"
-
+import OrderContext from "../../../context/OrderContext.jsx";
+import { fakeMenu } from "../../../fakeData/fakeMenu"
 
 export default function OrderPage() {
 
-    const { username } = useParams()
     const [isModeAdmin, setisModeAdmin] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
+    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+
+    
+    
+    const handleAdd = (newProduct) => { 
+        // 1 . copie du tableau
+        const menuCopy = [...menu]
+        // 2 . manipulation de la copie du tableau
+        const menuUpdated = [newProduct, ...menuCopy]
+        // 3 . update du state
+        setMenu(menuUpdated)
+    }
 
     const orderContextValue = {
         isModeAdmin, 
@@ -20,7 +30,9 @@ export default function OrderPage() {
         isCollapsed,
         setIsCollapsed,
         currentTabSelected, 
-        setCurrentTabSelected
+        setCurrentTabSelected,
+        menu,
+        handleAdd,
     }
     return (
         <OrderContext.Provider value={orderContextValue}>
