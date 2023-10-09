@@ -4,9 +4,9 @@ import OrderContext from "../../../../../../context/OrderContext";
 
 const EMPTY_PRODUCT = {
     id: "",
-    title: "Nouveau produit",
+    title: "",
     imageSource: "",
-    price: 14,
+    price: 0,
 }
 
 export default function AddForm() {
