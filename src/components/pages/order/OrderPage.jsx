@@ -24,6 +24,19 @@ export default function OrderPage() {
         setMenu(menuUpdated)
     }
 
+    const handleDelete = (idOfProductToDelete) => {
+        // 1.copie du state
+        const menuCopy = [...menu]
+
+        // 2. manip du state
+        const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
+        console.log(menuUpdated);
+
+        // 3. update du state
+        setMenu(menuUpdated)
+
+    }
+
     const orderContextValue = {
         isModeAdmin, 
         setisModeAdmin,
@@ -33,6 +46,7 @@ export default function OrderPage() {
         setCurrentTabSelected,
         menu,
         handleAdd,
+        handleDelete,
     }
     return (
         <OrderContext.Provider value={orderContextValue}>
