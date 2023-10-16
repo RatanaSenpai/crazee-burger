@@ -11,7 +11,7 @@ export default function OrderPage() {
     const [isModeAdmin, setisModeAdmin] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+    const [menu, setMenu] = useState(fakeMenu.SMALL)
 
     
     
@@ -34,8 +34,9 @@ export default function OrderPage() {
 
         // 3. update du state
         setMenu(menuUpdated)
-
     }
+
+    const resetMenu = () => { setMenu(fakeMenu.MEDIUM) }
 
     const orderContextValue = {
         isModeAdmin, 
@@ -47,6 +48,7 @@ export default function OrderPage() {
         menu,
         handleAdd,
         handleDelete,
+        resetMenu,
     }
     return (
         <OrderContext.Provider value={orderContextValue}>
