@@ -5,6 +5,7 @@ import Navbar from "./Navbar/Navbar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu"
+import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
 
 export default function OrderPage() {
 
@@ -12,6 +13,7 @@ export default function OrderPage() {
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
     
     
@@ -49,6 +51,8 @@ export default function OrderPage() {
         handleAdd,
         handleDelete,
         resetMenu,
+        newProduct,
+        setNewProduct
     }
     return (
         <OrderContext.Provider value={orderContextValue}>
