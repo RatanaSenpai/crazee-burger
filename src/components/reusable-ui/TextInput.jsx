@@ -35,12 +35,15 @@ const TextInputStyled = styled.div`
             }
         }
 
-        ${(props) => {
-        if (props.version === "normal") return extraStyleNormal
-        if (props.version === "minimalist") return extraStyleMinimalist
-    }}
+        /* ${(props) => {
+                if (props.version === "normal") return extraStyleNormal
+                if (props.version === "minimalist") return extraStyleMinimalist
+            }
+        } */
+        ${({version}) => extraStyle[version]
+        }
+`
 
-        `
 const extraStyleNormal = css`
         background-color: ${theme.colors.white};
         padding: 18px 28px;
@@ -69,3 +72,7 @@ const extraStyleMinimalist = css`
     }
 `
 
+const extraStyle = {
+    normal: extraStyleNormal,
+    minimalist: extraStyleMinimalist,
+}
