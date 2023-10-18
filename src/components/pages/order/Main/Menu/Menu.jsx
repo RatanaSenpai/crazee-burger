@@ -17,7 +17,7 @@ export default function Menu() {
     // affichage
     if (menu.length === 0) {
         if (!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onClick={resetMenu}/>
+        return <EmptyMenuAdmin onReset={resetMenu}/>
     }
     
 
