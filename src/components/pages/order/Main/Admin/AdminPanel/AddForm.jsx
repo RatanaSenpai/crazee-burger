@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../../../context/OrderContext";
-import {FiCheck} from "react-icons/fi"
 import { FaHamburger } from "react-icons/fa"
 import { BsFillCameraFill } from "react-icons/bs"
 import { MdOutlineEuro } from "react-icons/md"
@@ -9,6 +8,7 @@ import { theme } from "../../../../../../theme"
 import TextInput from "../../../../../reusable-ui/TextInput";
 import Button from "../../../../../reusable-ui/Button";
 import ImagePreview from "./ImagePreview";
+import SubmitMessage from "./SubmitMessage";
 
 export const EMPTY_PRODUCT = {
     id: "",
@@ -86,10 +86,7 @@ export default function AddForm() {
             <div className="submit">
                 <Button className="submit-button" label={"Ajouter un nouveau produit au menu"} version="success"/>
                 {isSubmitted && (
-                    <div className="submit-message">
-                        <FiCheck className="icon"/>
-                        <span className="message">Ajouté avec succès !</span>
-                    </div>
+                    <SubmitMessage />
                 )}
             </div>
         </AddFormStyled>
