@@ -5,18 +5,20 @@ import Navbar from "./Navbar/Navbar";
 import { useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu"
-import { EMPTY_PRODUCT } from "./Main/Admin/AdminPanel/AddForm";
+import { EMPTY_PRODUCT } from "../../../enums/product";
+
 
 export default function OrderPage() {
-
+    // state
     const [isModeAdmin, setisModeAdmin] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(false)
     const [currentTabSelected, setCurrentTabSelected] = useState("add")
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
     
-    
+    // comportement
     const handleAdd = (newProduct) => { 
         // 1 . copie du tableau
         const menuCopy = [...menu]
@@ -52,8 +54,12 @@ export default function OrderPage() {
         handleDelete,
         resetMenu,
         newProduct,
-        setNewProduct
+        setNewProduct,
+        productSelected,
+        setProductSelected
     }
+
+    //affichage
     return (
         <OrderContext.Provider value={orderContextValue}>
             <OrderPageStyled>
