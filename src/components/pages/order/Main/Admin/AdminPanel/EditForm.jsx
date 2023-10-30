@@ -1,26 +1,30 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import OrderContext from "../../../../../../context/OrderContext";
-import HintMessage from "./HintMessage";
 import ImagePreview from "./ImagePreview";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import styled from "styled-components";
-import { theme } from "../../../../../../theme";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function EditForm() {
-    const { productSelected } = useContext(OrderContext)
-    const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
+    // state
+    const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext)
     
     const inputTexts = getInputTextsConfig(productSelected)
 
+    // comportement
     const handleChange = (event) => { 
         const {name, value} = event.target
-        setProductBeingEdited({
-            ...productBeingEdited,
+        
+        const productBeingUpdated = {
+            ...productSelected,
             [name]: value,
-        })
+        }
+        
+        setProductSelected(productBeingUpdated) // cette ligne update le formulaire
+        handleEdit(productBeingUpdated, event) // cette ligne update le menu
     }
+
+    // affichage
     return (
         <EditFormStyled >
         <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title}/>
@@ -62,28 +66,6 @@ const EditFormStyled = styled.form`
         .submit-button {
             /* width: 50%; */
             height: 100%;
-        }
-    
-        .submit-message {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 5px;
-
-            .icon {
-                color: ${theme.colors.success};
-                margin-left: 10px;
-                width: 1em;
-                height: 1em;
-                border: 1px solid ${theme.colors.success};
-                border-radius: 50%;
-                vertical-align: middle;
-            }
-            .message {
-                margin-left: 5px;
-                font-size: ${theme.fonts.size.SM};
-                color: ${theme.colors.success};
-            }
         }
     }
 `
