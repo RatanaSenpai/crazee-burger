@@ -25,8 +25,9 @@ export default function Card({ title, imageSource, leftDescription, hasDeleteBut
 
 const CardStyled = styled.div`
     background: ${theme.colors.white};
-    width: 200px;
-    height: 300px;
+    box-sizing: border-box;
+    width: 240px;
+    height: 330px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px;
