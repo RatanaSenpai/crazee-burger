@@ -18,7 +18,7 @@ export default function OrderPage() {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
     
-    // comportement
+    // comportements (gestionnaire de state ou "state handlers")
     const handleAdd = (newProduct) => { 
         // 1 . copie du tableau
         const menuCopy = deepClone(menu)
