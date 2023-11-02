@@ -1,5 +1,5 @@
-export const deepClone = (array) => { 
-    JSON.parse(JSON.stringify(array))
+export const deepClone = (array) => {
+    return JSON.parse(JSON.stringify(array))
 }
 
 // const fruits = [{ nom: "Abricot" }, { nom: "Banane" }]
