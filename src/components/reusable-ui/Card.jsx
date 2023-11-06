@@ -12,7 +12,14 @@ export default function Card({
     onClick, 
     isHoverable, 
     isSelected, 
-}) {
+}) 
+// state (vide)
+
+// comportements (vide)
+
+// affichage
+
+{
     return (
         <CardStyled 
             className="produit" 
