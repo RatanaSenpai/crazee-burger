@@ -2,11 +2,12 @@ import { styled } from "styled-components";
 import Main from "./Main/Main";
 import { theme } from "../../../theme";
 import Navbar from "./Navbar/Navbar";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import OrderContext from "../../../context/OrderContext.jsx";
 import { fakeMenu } from "../../../fakeData/fakeMenu"
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { deepClone } from "../../../utils/array"
+
 
 export default function OrderPage() {
     // state
@@ -16,6 +17,8 @@ export default function OrderPage() {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM)
     const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+    const titleEditRef = useRef()
+
 
     
     // comportements (gestionnaire de state ou "state handlers")
@@ -71,7 +74,8 @@ export default function OrderPage() {
         setNewProduct,
         productSelected,
         setProductSelected,
-        handleEdit
+        handleEdit,
+        titleEditRef,
     }
 
     //affichage

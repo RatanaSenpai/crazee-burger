@@ -21,16 +21,18 @@ export default function Menu() {
         setProductSelected, 
         setIsCollapsed,
         setCurrentTabSelected,
+        titleEditRef,
     }= useContext(OrderContext)
     
     // comportements (gestionnaires d'événement ou "event handlers")
-    const handleClick = (idProductClicked) => {
+    const handleClick = async (idProductClicked) => {
         if(!isModeAdmin) return
-
-        setIsCollapsed(false)
-        setCurrentTabSelected("edit")
+        await setIsCollapsed(false)
+        await setCurrentTabSelected("edit")
         const productClickOn = menu.find((product) => product.id === idProductClicked)
-        setProductSelected(productClickOn)
+        await setProductSelected(productClickOn)
+        titleEditRef.current.focus()
+
     }
 
     
