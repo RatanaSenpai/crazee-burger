@@ -5,6 +5,7 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import styled from "styled-components";
 import { theme } from "../../../../../../theme";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
     // state
@@ -34,11 +35,7 @@ export default function EditForm() {
             ))}
             
         </div>
-        <div className="submit">
-            <span className="sentence">
-                Cliquer sur un produit du menu pour le modifier{" "}
-            <span className="live-update">en temps réel</span>
-            </span>
+        <div className="submit"><EditInfoMessage />
         </div>
     </EditFormStyled>
         )
