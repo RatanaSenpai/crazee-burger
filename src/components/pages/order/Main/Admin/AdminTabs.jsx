@@ -4,42 +4,41 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi"
 import { theme } from "../../../../../theme"
 import OrderContext from "../../../../../context/OrderContext"
 import { useContext } from "react"
-import { tabsConfig } from "./tabsConfig"
+import { getTabsConfig } from "./tabsConfig"
 
 export default function AdminTabs() {
+    // state
+    const { isCollapsed, setIsCollapsed, currentTabSelected, setCurrentTabSelected } =
+        useContext(OrderContext)
 
-    const {
-        isCollapsed, 
-        setIsCollapsed, 
-        currentTabSelected,
-        setCurrentTabSelected
-    } = useContext(OrderContext)
-
+    // comportements
     const selectTab = (tabSelected) => {
-        // ouvre le panel dans tous les cas
-        setIsCollapsed(false)
-        // réactualise l'onglet séléctionné
+        setIsCollapsed(false) // tu m'ouvres le pannel
         setCurrentTabSelected(tabSelected)
     }
 
-    const tabs = tabsConfig
+    const tabs = getTabsConfig()
 
+    // affichage
     return (
         <AdminTabsStyled>
+        <Tab
+            index="chevron"
+            label=""
+            Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+            onClick={() => setIsCollapsed(!isCollapsed)}
+            className={isCollapsed ? "is-active" : ""}
+        />
+        {tabs.map((tab) => (
             <Tab
-                Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-                onClick={() => setIsCollapsed(!isCollapsed)}
-                className={isCollapsed ? "is-active" : ""}
+            key={tab.index}
+            index={tab.index}
+            label={tab.label}
+            Icon={tab.Icon}
+            onClick={() => selectTab(tab.index)}
+            className={currentTabSelected === tab.index ? "is-active" : ""}
             />
-            {tabs.map((tab) => (
-                <Tab 
-                key={tab.index}
-                label={tab.label}
-                Icon={tab.Icon} 
-                onClick={() => selectTab(tab.index)}
-                className={currentTabSelected === tab.index ? "is-active" : ""}
-            />
-            ))}
+        ))}
         </AdminTabsStyled>
     )
 }
