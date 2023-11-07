@@ -26,7 +26,7 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, children  }, ref) 
           />
         ))}
       </div>
-      <div className="submit">{children}</div>
+      <div className="form-footer">{children}</div>
     </FormStyled>
   )
 })
@@ -51,17 +51,12 @@ const FormStyled = styled.form`
     grid-row-gap: 8px;
   }
 
-  .submit {
+  .form-footer  {
     /* background: green; */
     grid-area: 4 / -2 / -1 / -1;
     display: flex;
     align-items: center;
     position: relative;
     top: 3px;
-
-    .submit-button {
-      /* width: 50%; */
-      height: 100%;
-    }
   }
 `
