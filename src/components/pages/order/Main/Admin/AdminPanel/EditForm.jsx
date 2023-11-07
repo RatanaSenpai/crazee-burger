@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import styled from "styled-components"
 import OrderContext from "../../../../../../context/OrderContext"
 import Form from "./Form"
 import EditInfoMessage from "./EditInfoMessage"
@@ -23,11 +22,8 @@ export default function EditForm() {
 
     // affichage
     return (
-        <Form
-            product={productSelected}
-            onChange={handleChange}
-            ref={titleEditRef}
-            QUELQUECHOSE={<EditInfoMessage />}
-        />
+        <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
+            <EditInfoMessage />
+        </Form>
     )
 }
