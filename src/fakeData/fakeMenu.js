@@ -152,7 +152,7 @@ const LARGE = [
     isAdvertised: false,
   },
   {
-    id: "1",
+    id: "10",
     imageSource: "/images/ice-cream.png",
     title: "Glaces artisanales",
     price: 4.678,
