@@ -2,6 +2,10 @@ export const deepClone = (array) => {
     return JSON.parse(JSON.stringify(array))
 }
 
+export const find = (id, array) => {
+    return array.find((itemInArray) => itemInArray.id === id)
+}
+
 // const fruits = [{ nom: "Abricot" }, { nom: "Banane" }]
 // const fruitsShallowCopy = [...fruits]
 // const fruitsDeepCopy = deepClone(fruits)
