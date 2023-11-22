@@ -10,7 +10,7 @@ export const useBasket = () => {
         const basketCopy = deepClone(basket)
 
         const isProductAlreadyInBasket = find(productToAdd.id, basketCopy) !== undefined
-        console.log("isProductAlreadyInBasket: ", isProductAlreadyInBasket)
+        // console.log("isProductAlreadyInBasket: ", isProductAlreadyInBasket)
 
         //2. manip de la copie du state
         // 1er cas : le produit n'est pas déjà dans le basket
@@ -24,9 +24,21 @@ export const useBasket = () => {
 
             //3. update du state
             setBasket(basketUpdated)
-        }
+        } else {
+            // 2ème cas : le produit n'est déjà dans le basket
+            const indexOfBasketProductToIncrement = basket.findIndex(
+                (basketProduct) => basketProduct.id === productToAdd.id
+            )
 
-        // 2ème cas : le produit n'est déjà dans le basket
+            // console.log("indexOfBasketProductToIncrement: ", indexOfBasketProductToIncrement)
+            console.log(
+                "basket[indexOfBasketProductToIncrement]: ",
+                basketCopy[indexOfBasketProductToIncrement]
+            )
+            basketCopy[indexOfBasketProductToIncrement].quantity += 1
+            //3. update du state
+            setBasket(basketCopy)
+        }
     }
 
     return { basket, handleAddToBasket }
