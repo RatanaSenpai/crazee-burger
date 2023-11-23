@@ -23,7 +23,6 @@ export const useMenu = () => {
 
         //2. manip de la copie state
         const menuUpdated = menuCopy.filter((product) => product.id !== idOfProductToDelete)
-        console.log("menuUpdated: ", menuUpdated)
 
         //3. update du state
         setMenu(menuUpdated)
