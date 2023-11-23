@@ -3,7 +3,7 @@ import { fakeBasket } from "../fakeData/fakeBasket"
 import { deepClone, find, findIndex } from "../utils/array"
 
 export const useBasket = () => {
-    const [basket, setBasket] = useState(fakeBasket.SMALL)
+    const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
     const handleAddToBasket = (productToAdd) => {
         const basketCopy = deepClone(basket)
