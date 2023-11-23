@@ -1,11 +1,21 @@
-import React from "react"
+import React, { useContext } from "react"
 import styled from "styled-components"
+import OrderContext from "../../../../../context/OrderContext"
 import BasketCard from "./BasketCard"
 import { IMAGE_COMING_SOON } from "../../../../../enums/product"
 
-export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasketProduct }) {
-    const handleOnDelete = (id) => {
+export default function BasketProducts() {
+    const { basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected } =
+    useContext(OrderContext)
+
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation()
         handleDeleteBasketProduct(id)
+    }
+
+    const handleCardClick = (id) => {
+        if (!isModeAdmin) return
+        handleProductSelected(id)
     }
 
     return (
@@ -15,8 +25,9 @@ export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasket
                     <BasketCard
                         {...basketProduct}
                         imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}
-                        onDelete={() => handleOnDelete(basketProduct.id)}
+                        onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                         isModeAdmin={isModeAdmin}
+                        onClick={() => handleCardClick(basketProduct.id)}
                     />
                 </div>
             ))}

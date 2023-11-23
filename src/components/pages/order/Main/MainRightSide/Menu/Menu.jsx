@@ -19,8 +19,7 @@ export default function Menu() {
         resetMenu,
         productSelected, 
         setProductSelected, 
-        setIsCollapsed,
-        setCurrentTabSelected,
+        handleProductSelected,
         titleEditRef,
         handleAddToBasket,
         handleDeleteBasketProduct
@@ -28,13 +27,9 @@ export default function Menu() {
     
     // comportements (gestionnaires d'événement ou "event handlers")
     const handleClick = async (idProductClicked) => {
-        if(!isModeAdmin) return
-        await setIsCollapsed(false)
-        await setCurrentTabSelected("edit")
-        const productClickedOn = find(idProductClicked, menu)
-        await setProductSelected(productClickedOn)
-        titleEditRef.current.focus()
-    }
+            if (!isModeAdmin) return
+            handleProductSelected(idProductClicked)
+        }
 
     // affichage
     if (menu.length === 0) {
