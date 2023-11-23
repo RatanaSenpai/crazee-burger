@@ -23,6 +23,7 @@ export default function Menu() {
         setCurrentTabSelected,
         titleEditRef,
         handleAddToBasket,
+        handleDeleteBasketProduct
     }= useContext(OrderContext)
     
     // comportements (gestionnaires d'événement ou "event handlers")
@@ -44,6 +45,7 @@ export default function Menu() {
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation()
         handleDelete(idProductToDelete)
+        handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
         titleEditRef.current.focus()
     }
