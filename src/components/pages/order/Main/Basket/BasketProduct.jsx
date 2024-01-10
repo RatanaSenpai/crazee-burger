@@ -6,8 +6,8 @@ import { IMAGE_COMING_SOON } from "../../../../../enums/product"
 import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper"
 
 export default function BasketProducts() {
-    const { basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, productSelected  } =
-    useContext(OrderContext)
+    const { basket, isModeAdmin, handleDeleteBasketProduct, handleProductSelected, productSelected } =
+        useContext(OrderContext)
 
     const handleOnDelete = (event, id) => {
         event.stopPropagation()

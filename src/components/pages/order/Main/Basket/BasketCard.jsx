@@ -4,43 +4,43 @@ import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme"
 import { formatPrice } from "../../../../../utils/maths"
 
-export default function BasketCard({ 
-  title, 
-  price, 
-  quantity, 
-  imageSource, 
-  className, 
+export default function BasketCard({
+  title,
+  price,
+  quantity,
+  imageSource,
+  className,
   isClickable,
   isSelected,
   onDelete,
-  onClick, 
+  onClick,
 }) {
-    return (
-      <BasketCardStyled
-        className={className}
-        isClickable={isClickable}
-        onClick={onClick}
-        isSelected={isSelected}
-      >
-            <div className="delete-button" onClick={onDelete}>
-                <MdDeleteForever className="icon" />
-            </div>
-            <div className="image">
-                <img src={imageSource} alt={title} />
-            </div>
-            <div className="text-info">
-                <div className="left-info">
-                    <div className="title">
-                        <span>{title}</span>
-                    </div>
-                    <span className="price">{formatPrice(price)}</span>
-                </div>
-                <div className="quantity">
-                    <span>x {quantity}</span>
-                </div>
-            </div>
-        </BasketCardStyled>
-    )
+  return (
+    <BasketCardStyled
+      className={className}
+      isClickable={isClickable}
+      onClick={onClick}
+      isSelected={isSelected}
+    >
+      <div className="delete-button" onClick={onDelete}>
+        <MdDeleteForever className="icon" />
+      </div>
+      <div className="image">
+        <img src={imageSource} alt={title} />
+      </div>
+      <div className="text-info">
+        <div className="left-info">
+          <div className="title">
+            <span>{title}</span>
+          </div>
+          <span className="price">{formatPrice(price)}</span>
+        </div>
+        <div className="quantity">
+          <span>x {quantity}</span>
+        </div>
+      </div>
+    </BasketCardStyled>
+  )
 }
 
 const BasketCardStyled = styled.div`

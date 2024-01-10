@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { styled } from "styled-components";
 import { BsPersonCircle } from "react-icons/bs"
 
@@ -19,9 +19,9 @@ export default function LoginForm() {
         navigate(`order/${inputValue}`)
     }
 
-    const handleChange = (e) => {   
-            setInputValue(e.target.value)
-        }
+    const handleChange = (e) => {
+        setInputValue(e.target.value)
+    }
 
     return (
         <LoginFormStyled action="submit" onSubmit={handleSubmit}>
@@ -31,26 +31,26 @@ export default function LoginForm() {
                 <h2>Connectez-vous</h2>
             </div>
             <div>
-                <TextInput 
-                    value={inputValue} 
-                    onChange={handleChange} 
+                <TextInput
+                    value={inputValue}
+                    onChange={handleChange}
                     placeholder={"Entrez votre prénom"}
                     required
                     Icon={<BsPersonCircle />}
                     className="input-login"
                     version="normal"
                 />
-                
+
                 <Button
                     label={"Accéder à mon espace"}
-                    Icon={ <IoChevronForwardOutline /> }
+                    Icon={<IoChevronForwardOutline />}
                 />
             </div>
         </LoginFormStyled>
     )
 }
 
-const  LoginFormStyled = styled.form`
+const LoginFormStyled = styled.form`
     text-align: center;
     max-width: 500px;
     min-width: 400px;

@@ -40,12 +40,12 @@ const TextInputStyled = styled.div`
         }
 
         /* ${(props) => {
-                if (props.version === "normal") return extraStyleNormal
-                if (props.version === "minimalist") return extraStyleMinimalist
-            }
-        } */
-        ${({version}) => extraStyle[version]
-        }
+        if (props.version === "normal") return extraStyleNormal
+        if (props.version === "minimalist") return extraStyleMinimalist
+    }
+    } */
+        ${({ version }) => extraStyle[version]
+    }
 `
 
 const extraStyleNormal = css`
