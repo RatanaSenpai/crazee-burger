@@ -3,18 +3,20 @@ import OrderContext from "../../../../../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 import Form from "./Form"
 import SubmitButton from "./SubmitButton"
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths"
 
 export default function AddForm() {
-  // state
+    // state
     const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
-  // comportements
+    // comportements
     const handleSubmit = (event) => {
         event.preventDefault()
         const newProductToAdd = {
             ...newProduct,
             id: crypto.randomUUID(),
+            price: replaceFrenchCommaWithDot(newProduct.price),
         }
 
         handleAdd(newProductToAdd)
@@ -35,7 +37,7 @@ export default function AddForm() {
         }, 2000)
     }
 
-  // affichage
+    // affichage
     return (
         <Form product={newProduct} onSubmit={handleSubmit} onChange={handleChange}>
             <SubmitButton isSubmitted={isSubmitted} />

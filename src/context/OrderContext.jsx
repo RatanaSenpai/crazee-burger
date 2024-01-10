@@ -2,29 +2,30 @@ import { createContext } from "react";
 
 export default createContext({
     isModeAdmin: false,
-    setisModeAdmin: () => {},
+    setisModeAdmin: () => { },
 
     isCollapsed: false,
-    setIsCollapsed: () => {},
+    setIsCollapsed: () => { },
 
     currentTabSelected: false,
-    setCurrentTabSelected: () => {},
+    setCurrentTabSelected: () => { },
 
     menu: [],
-    handleAdd: () => {},
-    handleDelete: () => {}, 
-    handleEdit: () => {},
-    resetMenu: () => {}, 
+    handleAdd: () => { },
+    handleDelete: () => { },
+    handleEdit: () => { },
+    resetMenu: () => { },
 
     newProduct: {},
-    setNewProduct: () => {},
+    setNewProduct: () => { },
 
     productSelected: {},
-    setProductSelected: () => {},
+    setProductSelected: () => { },
+    handleProductSelected: () => { },
 
     titleEditRef: {},
 
     basket: [],
-    handleAddToBasket: () => {},
-    handleDeleteBasketProduct: () => {},
+    handleAddToBasket: () => { },
+    handleDeleteBasketProduct: () => { },
 })

@@ -8,75 +8,64 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
-import { find } from "../../../../../../utils/array"
+import { isEmpty } from "../../../../../../utils/array"
 
 export default function Menu() {
-    // state
     const {
-        menu, 
-        isModeAdmin, 
-        handleDelete, 
+        menu,
+        isModeAdmin,
+        handleDelete,
         resetMenu,
-        productSelected, 
-        setProductSelected, 
-        handleProductSelected,
-        titleEditRef,
+        productSelected,
+        setProductSelected,
         handleAddToBasket,
-        handleDeleteBasketProduct
-    }= useContext(OrderContext)
-    
+        handleDeleteBasketProduct,
+        handleProductSelected,
+    } = useContext(OrderContext)
+    // state
+
     // comportements (gestionnaires d'événement ou "event handlers")
-    const handleClick = async (idProductClicked) => {
-            if (!isModeAdmin) return
-            handleProductSelected(idProductClicked)
-        }
-
-    // affichage
-    if (menu.length === 0) {
-        if (!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onReset={resetMenu}/>
-    }
-
-    const handleCardDelete = (event, idProductToDelete) => { 
+    const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
         handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current.focus()
     }
 
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation()
-        //const productToAdd = menu.find((menuProduct) => menuProduct.id === idProductToAdd)
-        const productToAdd = find(idProductToAdd, menu)
-        console.log("productToAdd", productToAdd);
-        // handleAddToBasket(productToAdd)
-        handleAddToBasket(productToAdd)
+        handleAddToBasket(idProductToAdd)
     }
-    
+
+    // affichage
+    if (isEmpty(menu)) {
+        if (!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onReset={resetMenu} />
+    }
+
     return (
-        <MenuStyled className="menu">            
-        {menu.map(({ id, title, imageSource, price }) => {
-            return (
-            <Card
-                key={id}
-                title={title}
-                imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
-                leftDescription={formatPrice(price)}
-                hasDeleteButton={isModeAdmin}
-                onDelete={(event) => handleCardDelete(event, id)}
-                onClick={() => handleClick(id)}
-                isHoverable={isModeAdmin}
-                isSelected={checkIfProductIsClicked(id, productSelected.id)}
-                onAdd={(event) => handleAddButton(event, id)}
-            />
-            )
-        })}
+        <MenuStyled className="menu">
+            {menu.map(({ id, title, imageSource, price }) => {
+                return (
+                    <Card
+                        key={id}
+                        title={title}
+                        imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
+                        leftDescription={formatPrice(price)}
+                        hasDeleteButton={isModeAdmin}
+                        onDelete={(event) => handleCardDelete(event, id)}
+                        onClick={isModeAdmin ? () => handleProductSelected(id) : null}
+                        isHoverable={isModeAdmin}
+                        isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                        onAdd={(event) => handleAddButton(event, id)}
+                    />
+                )
+            })}
         </MenuStyled>
     )
 }
 
-    const MenuStyled = styled.div`
+const MenuStyled = styled.div`
     background: ${theme.colors.background_white};
     display: grid;
     grid-template-columns: repeat(3, 1fr);

@@ -7,7 +7,7 @@ import OrderContext from "../../../context/OrderContext.jsx";
 import { EMPTY_PRODUCT } from "../../../enums/product";
 import { useMenu } from "../../../Hooks/useMenu.jsx";
 import { useBasket } from "../../../Hooks/useBasket.jsx"
-import { find } from "../../../utils/array"
+import { findObjectById } from "../../../utils/array"
 
 
 export default function OrderPage() {
@@ -19,22 +19,22 @@ export default function OrderPage() {
     const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
     const titleEditRef = useRef()
     const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-    const { basket, handleAddToBasket, handleDeleteBasketProduct} = useBasket()
+    const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
     const handleProductSelected = async (idProductClicked) => {
+        const productClickedOn = findObjectById(idProductClicked, menu)
         await setIsCollapsed(false)
         await setCurrentTabSelected("edit")
-        const productClickedOn = find(idProductClicked, menu)
         await setProductSelected(productClickedOn)
         titleEditRef.current.focus()
     }
 
     const orderContextValue = {
-        isModeAdmin, 
+        isModeAdmin,
         setisModeAdmin,
         isCollapsed,
         setIsCollapsed,
-        currentTabSelected, 
+        currentTabSelected,
         setCurrentTabSelected,
         menu,
         handleAdd,
@@ -58,7 +58,7 @@ export default function OrderPage() {
             <OrderPageStyled>
                 <div className="container">
                     <Navbar />
-                    <Main/>
+                    <Main />
                 </div>
             </OrderPageStyled>
         </OrderContext.Provider>
