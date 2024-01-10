@@ -24,6 +24,8 @@ export default function Menu() {
         setIsCollapsed,
         setCurrentTabSelected,
         titleEditRef,
+        handleAddToBasket,
+        handleDeleteBasketProduct,
     } = useContext(OrderContext)
 
     // comportements (gestionnaires d'événement ou "event handlers")
@@ -45,8 +47,14 @@ export default function Menu() {
     const handleCardDelete = (event, idProductToDelete) => {
         event.stopPropagation()
         handleDelete(idProductToDelete)
+        handleDeleteBasketProduct(idProductToDelete)
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
         titleEditRef.current.focus()
+    }
+
+    const handleAddButton = (event, idProductToAdd) => {
+        event.stopPropagation()
+        handleAddToBasket(idProductToAdd)
     }
 
     return (
@@ -63,6 +71,7 @@ export default function Menu() {
                         onClick={() => handleClick(id)}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(id, productSelected.id)}
+                        onAdd={(event) => handleAddButton(event, id)}
                     />
                 )
             })}
