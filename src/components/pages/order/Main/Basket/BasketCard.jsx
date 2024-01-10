@@ -11,7 +11,6 @@ export default function BasketCard({
   imageSource,
   className,
   isClickable,
-  isSelected,
   onDelete,
   onClick,
 }) {
@@ -20,7 +19,6 @@ export default function BasketCard({
       className={className}
       isClickable={isClickable}
       onClick={onClick}
-      isSelected={isSelected}
     >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />

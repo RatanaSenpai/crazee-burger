@@ -8,10 +8,9 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
-import { findObjectById, isEmpty } from "../../../../../../utils/array"
+import { isEmpty } from "../../../../../../utils/array"
 
 export default function Menu() {
-    // state
     const {
         menu,
         isModeAdmin,
@@ -19,39 +18,29 @@ export default function Menu() {
         resetMenu,
         productSelected,
         setProductSelected,
-        handleProductSelected,
-        titleEditRef,
         handleAddToBasket,
-        handleDeleteBasketProduct
+        handleDeleteBasketProduct,
+        handleProductSelected,
     } = useContext(OrderContext)
+    // state
 
     // comportements (gestionnaires d'événement ou "event handlers")
-    const handleClick = async (idProductClicked) => {
-        if (!isModeAdmin) return
-        handleProductSelected(idProductClicked)
+    const handleCardDelete = (event, idProductToDelete) => {
+        event.stopPropagation()
+        handleDelete(idProductToDelete)
+        handleDeleteBasketProduct(idProductToDelete)
+        idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
+    }
+
+    const handleAddButton = (event, idProductToAdd) => {
+        event.stopPropagation()
+        handleAddToBasket(idProductToAdd)
     }
 
     // affichage
     if (isEmpty(menu)) {
         if (!isModeAdmin) return <EmptyMenuClient />
         return <EmptyMenuAdmin onReset={resetMenu} />
-    }
-
-    const handleCardDelete = (event, idProductToDelete) => {
-        event.stopPropagation()
-        handleDelete(idProductToDelete)
-        handleDeleteBasketProduct(idProductToDelete)
-        idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
-        titleEditRef.current.focus()
-    }
-
-    const handleAddButton = (event, idProductToAdd) => {
-        event.stopPropagation()
-        //const productToAdd = menu.findObjectById((menuProduct) => menuProduct.id === idProductToAdd)
-        const productToAdd = findObjectById(idProductToAdd, menu)
-        console.log("productToAdd", productToAdd);
-        // handleAddToBasket(productToAdd)
-        handleAddToBasket(productToAdd)
     }
 
     return (
@@ -65,7 +54,7 @@ export default function Menu() {
                         leftDescription={formatPrice(price)}
                         hasDeleteButton={isModeAdmin}
                         onDelete={(event) => handleCardDelete(event, id)}
-                        onClick={() => handleClick(id)}
+                        onClick={isModeAdmin ? () => handleProductSelected(id) : null}
                         isHoverable={isModeAdmin}
                         isSelected={checkIfProductIsClicked(id, productSelected.id)}
                         onAdd={(event) => handleAddButton(event, id)}

@@ -22,9 +22,9 @@ export default function OrderPage() {
     const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
     const handleProductSelected = async (idProductClicked) => {
+        const productClickedOn = findObjectById(idProductClicked, menu)
         await setIsCollapsed(false)
         await setCurrentTabSelected("edit")
-        const productClickedOn = findObjectById(idProductClicked, menu)
         await setProductSelected(productClickedOn)
         titleEditRef.current.focus()
     }

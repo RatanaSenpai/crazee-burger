@@ -6,9 +6,11 @@ import { IMAGE_COMING_SOON } from "../../../../../enums/product"
 import { findObjectById } from "../../../../../utils/array"
 
 export default function BasketProducts() {
-    const { basket, isModeAdmin, handleDeleteBasketProduct, menu } = useContext(OrderContext)
+    const { basket, isModeAdmin, handleDeleteBasketProduct, menu, handleProductSelected } =
+        useContext(OrderContext)
 
-    const handleOnDelete = (id) => {
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation()
         handleDeleteBasketProduct(id)
     }
 
@@ -22,8 +24,9 @@ export default function BasketProducts() {
                             {...menuProduct}
                             imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
                             quantity={basketProduct.quantity}
-                            onDelete={() => handleOnDelete(basketProduct.id)}
+                            onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                             isClickable={isModeAdmin}
+                            onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
                         />
                     </div>
                 )
